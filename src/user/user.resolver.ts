@@ -8,9 +8,16 @@ import { UpdateOneUserInput } from './dto/update-one-user.input';
 
 import { UpdateManyUsersInput } from './dto/update-many-users.input';
 
+import { DeleteOneUserInput } from './dto/delete-one-user.input';
+
 @Resolver('User')
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
+
+  @Mutation('deleteOneUser')
+  deleteOne(@Args('input') deleteOneUserInput: DeleteOneUserInput) {
+    return this.userService.deleteOne(deleteOneUserInput.id);
+  }
 
   @Mutation('updateManyUsers')
   updateMany(@Args('input') updateManyUsersInput: UpdateManyUsersInput) {

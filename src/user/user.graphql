@@ -58,7 +58,25 @@ type UpdateManyResponse {
   updatedCount: Int!
 }
 
+input DeleteOneUserInput {
+  id: ID!
+}
+
+type UserDeleteResponse {
+  id: ID
+  name: String
+  email: String
+  phone: String
+  jobTitle: String
+  timezone: String
+  role: Role
+  avatarUrl: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
 type Mutation {
+  deleteOneUser(input: DeleteOneUserInput!): UserDeleteResponse!
   updateManyUsers(input: UpdateManyUsersInput!): UpdateManyResponse!
   updateOneUser(input: UpdateOneUserInput!): User!
   createManyUsers(input: CreateManyUsersInput!): [User!]!
