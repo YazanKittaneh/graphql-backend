@@ -66,3 +66,17 @@ type UpdateManyResponse {
 type Mutation {
   updateManyEventCategories(input: UpdateManyEventCategoriesInput!): UpdateManyResponse!
 }
+input DeleteOneEventCategoryInput {
+  id: ID!
+}
+
+type EventCategoryDeleteResponse {
+  id: ID
+  title: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Mutation {
+  deleteOneEventCategory(input: DeleteOneEventCategoryInput!): EventCategoryDeleteResponse!
+}

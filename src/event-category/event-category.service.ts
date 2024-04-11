@@ -72,3 +72,13 @@ export class EventCategoryService {
       updatedCount,
     };
   }
+  deleteOne(deleteOneEventCategoryInput: DeleteOneEventCategoryInput) {
+    // Logic to delete an event category from the database
+    // This is a placeholder implementation
+    return {
+      id: deleteOneEventCategoryInput.id,
+      title: "Deleted Category", // Placeholder title
+      createdAt: new Date(), // Placeholder createdAt
+      updatedAt: new Date(), // Placeholder updatedAt
+    };
+  }
