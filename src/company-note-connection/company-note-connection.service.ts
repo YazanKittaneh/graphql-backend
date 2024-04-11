@@ -1,26 +1,37 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateCompanyNoteConnectionInput } from './dto/create-company-note-connection.input';
 import { UpdateCompanyNoteConnectionInput } from './dto/update-company-note-connection.input';
+import { CompanyNoteConnection } from './entities/company-note-connection.entity';
+
+@Injectable()
+export class CompanyNoteConnectionService {
+  constructor(
+    @InjectRepository(CompanyNoteConnection)
+    private companyNoteConnectionRepository: Repository<CompanyNoteConnection>,
+  ) {}
 
 @Injectable()
 export class CompanyNoteConnectionService {
   create(createCompanyNoteConnectionInput: CreateCompanyNoteConnectionInput) {
-    return 'This action adds a new companyNoteConnection';
+    const newCompanyNoteConnection = this.companyNoteConnectionRepository.create(createCompanyNoteConnectionInput);
+    return this.companyNoteConnectionRepository.save(newCompanyNoteConnection);
   }
 
   findAll() {
-    return `This action returns all companyNoteConnection`;
+    return this.companyNoteConnectionRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} companyNoteConnection`;
+    return this.companyNoteConnectionRepository.findOne(id);
   }
 
   update(id: number, updateCompanyNoteConnectionInput: UpdateCompanyNoteConnectionInput) {
-    return `This action updates a #${id} companyNoteConnection`;
+    return this.companyNoteConnectionRepository.save({ ...updateCompanyNoteConnectionInput, id: Number(id) });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} companyNoteConnection`;
+    return this.companyNoteConnectionRepository.delete(id);
   }
 }
