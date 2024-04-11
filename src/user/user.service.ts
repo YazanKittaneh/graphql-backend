@@ -9,6 +9,7 @@ import { UpdateManyUsersInput } from './dto/update-many-users.input';
 
 import { DeleteOneUserInput } from './dto/delete-one-user.input';
 import { DeleteManyUsersInput } from './dto/delete-many-users.input';
+import { CreateManyUsersInput } from './dto/create-many-users.input';
 
 @Injectable()
 export class UserService {
