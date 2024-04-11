@@ -28,7 +28,12 @@ input CreateOneUserInput {
   avatarUrl: String
 }
 
+input CreateManyUsersInput {
+  users: [CreateOneUserInput!]!
+}
+
 type Mutation {
+  createManyUsers(input: CreateManyUsersInput!): [User!]!
   createOneUser(input: CreateOneUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User

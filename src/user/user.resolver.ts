@@ -3,11 +3,16 @@ import { UserService } from './user.service';
 import { CreateUserInput } from './dto/create-user.input';
 import { CreateOneUserInput } from './dto/create-one-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { CreateManyUsersInput } from './dto/create-many-users.input';
 
 @Resolver('User')
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
+  @Mutation('createManyUsers')
+  createMany(@Args('input') createManyUsersInput: CreateManyUsersInput) {
+    return this.userService.createMany(createManyUsersInput.users);
+  }
   @Mutation('createOneUser')
   createOne(@Args('input') createOneUserInput: CreateOneUserInput) {
     return this.userService.createOne(createOneUserInput);
