@@ -90,3 +90,12 @@ updatedAt: DateTime
 input DeleteOneCompanyInput {
   # Define the fields for DeleteOneCompanyInput as per requirements
 }
+deleteManyCompanies(
+input: DeleteManyCompaniesInput!
+): DeleteManyResponse!
+type DeleteManyResponse {
+deletedCount: Int!
+}
+input DeleteManyCompaniesInput {
+  # Define the fields for DeleteManyCompaniesInput as per requirements
+}
