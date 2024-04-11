@@ -71,3 +71,22 @@ updatedCount: Int!
 input UpdateManyCompaniesInput {
   # Define the fields for UpdateManyCompaniesInput as per requirements
 }
+deleteOneCompany(
+input: DeleteOneCompanyInput!
+): CompanyDeleteResponse!
+type CompanyDeleteResponse {
+id: ID
+name: String
+avatarUrl: String
+totalRevenue: Int
+companySize: CompanySize
+industry: Industry
+businessType: BusinessType
+country: String
+website: String
+createdAt: DateTime
+updatedAt: DateTime
+}
+input DeleteOneCompanyInput {
+  # Define the fields for DeleteOneCompanyInput as per requirements
+}
