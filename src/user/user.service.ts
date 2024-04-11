@@ -1,20 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-
-import { User } from './entities/user.entity';
-
-@Injectable()
-export class UserService {
-  constructor(@InjectRepository(User) private userRepository: Repository<User>) {}
-}
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
-import { CreateUserInput } from './dto/create-user.input';
-import { UpdateUserInput } from './dto/update-user.input';
+
+
+
 
 @Injectable()
 export class UserService {
@@ -35,31 +27,6 @@ export class UserService {
   async update(id: string, updateUserInput: UpdateUserInput): Promise<User> {
     await this.userRepository.update(id, updateUserInput);
     return this.userRepository.findOne(id);
-  }
-
-  // The createMany method would need to be adjusted to use TypeORM's save method
-  // with an array of CreateUserInput objects if you want to create multiple users at once.
-
-  // The createOne method is essentially the same as the create method and might not be needed as a separate method.
-
-  create(createUserInput: CreateUserInput) {
-    return 'This action adds a new user';
-  }
-
-  findAll() {
-    return `This action returns all user`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
-
-  update(id: number, updateUserInput: UpdateUserInput) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
   }
 
   deleteMany(deleteManyUsersInput: DeleteManyUsersInput) {
