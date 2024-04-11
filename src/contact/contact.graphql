@@ -27,6 +27,19 @@ input CreateContactInput {
 
 input UpdateContactInput {
   id: Int!
+
+input CreateContactInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateOneContactInput {
+  name: String!
+  email: String!
+  phone: String
+  jobTitle: String
+  timezone: String
+  avatarUrl: String
 }
 
 type Query {
@@ -36,6 +49,7 @@ type Query {
 
 type Mutation {
   createContact(createContactInput: CreateContactInput!): Contact!
+  createOneContact(input: CreateOneContactInput!): Contact!
   updateContact(updateContactInput: UpdateContactInput!): Contact!
   removeContact(id: Int!): Contact
 }

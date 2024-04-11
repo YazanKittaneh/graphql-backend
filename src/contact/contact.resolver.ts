@@ -2,10 +2,16 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ContactService } from './contact.service';
 import { CreateContactInput } from './dto/create-contact.input';
 import { UpdateContactInput } from './dto/update-contact.input';
+import { CreateOneContactInput } from './dto/create-one-contact.input';
 
 @Resolver('Contact')
 export class ContactResolver {
   constructor(private readonly contactService: ContactService) {}
+
+  @Mutation('createOneContact')
+  createOne(@Args('input') createOneContactInput: CreateOneContactInput) {
+    return this.contactService.createOne(createOneContactInput);
+  }
 
   @Mutation('createContact')
   create(@Args('createContactInput') createContactInput: CreateContactInput) {
