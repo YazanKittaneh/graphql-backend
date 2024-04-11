@@ -4,7 +4,7 @@ import { Repository, In } from 'typeorm';
 import { User } from './entities/user.entity';
 import { CreateManyUsersInput } from './dto/create-many-users.input'; // Assuming CreateManyUsersInput and DeleteManyUsersInput are defined in the same dto index file
 import { CreateUserInput } from './dto/create-user.input'; // Assuming CreateManyUsersInput and DeleteManyUsersInput are defined in the same dto index file
-import { DeleteManyUsersInput } from './dto/delete-many-users.input'; // Assuming CreateManyUsersInput and DeleteManyUsersInput are defined in the same dto index file
+import { DeleteManyUsersInput } from './dto/delete-many-users.input';
 
 
 @Injectable()
@@ -50,9 +50,8 @@ export class UserService {
   }
 
   async deleteMany(deleteManyUsersInput: DeleteManyUsersInput): Promise<{ deletedCount: number }> {
-    const { affected } = await this.userRepository.delete(deleteManyUsersInput.ids);
-  async deleteMany(ids: string[]): Promise<number> {
+    const { ids } = deleteManyUsersInput;
     const { affected } = await this.userRepository.delete(ids);
-    return affected;
-    }
+    return { deletedCount: affected ? affected : 0 };
+  }
   }
