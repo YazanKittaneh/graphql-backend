@@ -22,3 +22,31 @@ type Mutation {
   updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
   removeCompany(id: Int!): Company
 }
+createOneCompany(
+input: CreateOneCompanyInput!
+): Company!
+type Company {
+id: ID!
+name: String!
+avatarUrl: String
+totalRevenue: Int
+companySize: CompanySize
+industry: Industry
+businessType: BusinessType
+country: String
+website: String
+createdAt: DateTime!
+updatedAt: DateTime!
+contactsAggregate(...): [CompanyContactsAggregateResponse!]!
+notesAggregate(...): [CompanyNotesAggregateResponse!]!
+dealsAggregate(...): [CompanyDealsAggregateResponse!]!
+createdBy: User!
+updatedBy: User
+salesOwner: User!
+contacts(...): CompanyContactsConnection!
+notes(...): CompanyNotesConnection!
+deals(...): CompanyDealsConnection!
+}
+input CreateOneCompanyInput {
+  # Define the fields for CreateOneCompanyInput as per requirements
+}
