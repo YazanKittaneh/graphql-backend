@@ -43,7 +43,23 @@ input UpdateOneUserInput {
   avatarUrl: String
 }
 
+input UpdateManyUsersInput {
+  ids: [ID!]!
+  name: String
+  email: String
+  phone: String
+  jobTitle: String
+  timezone: String
+  role: Role
+  avatarUrl: String
+}
+
+type UpdateManyResponse {
+  updatedCount: Int!
+}
+
 type Mutation {
+  updateManyUsers(input: UpdateManyUsersInput!): UpdateManyResponse!
   updateOneUser(input: UpdateOneUserInput!): User!
   createManyUsers(input: CreateManyUsersInput!): [User!]!
   createOneUser(input: CreateOneUserInput!): User!

@@ -5,8 +5,16 @@ import { UpdateUserInput } from './dto/update-user.input';
 import { CreateManyUsersInput } from './dto/create-many-users.input';
 import { UpdateOneUserInput } from './dto/update-one-user.input';
 
+import { UpdateManyUsersInput } from './dto/update-many-users.input';
+
 @Injectable()
 export class UserService {
+  updateMany(updateManyUsersInput: UpdateManyUsersInput) {
+    // Implementation logic to update many users
+    // This is a placeholder implementation. You'll need to replace it with your actual database update logic.
+    const updatedCount = updateManyUsersInput.ids.length; // Placeholder for actual update logic
+    return { updatedCount };
+  }
   updateOne(id: string, updateOneUserInput: UpdateOneUserInput) {
     // Implementation logic to update one user
     return `This action updates a user with id ${id}`;
