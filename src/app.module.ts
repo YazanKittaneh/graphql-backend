@@ -2,8 +2,11 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserModule } from './user/user.module';
 import { TodoItemModule } from './todo-item/todo-item.module';
 import { ContactModule } from './contact/contact.module';
 import { UserModule } from './user/user.module';
@@ -72,6 +75,17 @@ import { AuditConnectionModule } from './audit-connection/audit-connection.modul
     DealConnectionModule,
     QuoteConnectionModule,
     AuditConnectionModule,
+    ConfigModule.forRoot(),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('DATABASE_URI'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }),
+      inject: [ConfigService],
+    }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
