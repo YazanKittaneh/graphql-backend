@@ -3,9 +3,14 @@ import { CreateUserInput } from './dto/create-user.input';
 import { CreateOneUserInput } from './dto/create-one-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { CreateManyUsersInput } from './dto/create-many-users.input';
+import { UpdateOneUserInput } from './dto/update-one-user.input';
 
 @Injectable()
 export class UserService {
+  updateOne(id: string, updateOneUserInput: UpdateOneUserInput) {
+    // Implementation logic to update one user
+    return `This action updates a user with id ${id}`;
+  }
   createMany(createManyUsersInput: CreateManyUsersInput) {
     // Implementation logic to create many users
     return `This action adds new users with CreateManyUsersInput`;
