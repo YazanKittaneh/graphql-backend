@@ -47,3 +47,7 @@ class EventCategoryResolver {
   updateOne(@Args('input') updateOneEventCategoryInput: UpdateOneEventCategoryInput) {
     return this.eventCategoryService.updateOne(updateOneEventCategoryInput);
   }
+  @Mutation('updateManyEventCategories')
+  updateMany(@Args('input') updateManyEventCategoriesInput: UpdateManyEventCategoriesInput) {
+    return this.eventCategoryService.updateMany(updateManyEventCategoriesInput);
+  }

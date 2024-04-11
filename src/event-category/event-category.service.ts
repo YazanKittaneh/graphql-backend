@@ -64,3 +64,11 @@ export class EventCategoryService {
       events: [], // Placeholder events
     }));
   }
+  updateMany(updateManyEventCategoriesInput: UpdateManyEventCategoriesInput) {
+    // Logic to update many event categories in the database
+    // This is a placeholder implementation
+    const updatedCount = updateManyEventCategoriesInput.ids.length; // Placeholder updated count
+    return {
+      updatedCount,
+    };
+  }

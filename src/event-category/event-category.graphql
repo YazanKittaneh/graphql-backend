@@ -54,3 +54,15 @@ input UpdateOneEventCategoryInput {
 type Mutation {
   updateOneEventCategory(input: UpdateOneEventCategoryInput!): EventCategory!
 }
+input UpdateManyEventCategoriesInput {
+  ids: [ID!]!
+  title: String
+}
+
+type UpdateManyResponse {
+  updatedCount: Int!
+}
+
+type Mutation {
+  updateManyEventCategories(input: UpdateManyEventCategoriesInput!): UpdateManyResponse!
+}
