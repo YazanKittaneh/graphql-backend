@@ -4,8 +4,19 @@ import { UpdateEventCategoryInput } from './dto/update-event-category.input';
 
 import { CreateOneEventCategoryInput } from './dto/create-one-event-category.input';
 
+import { UpdateOneEventCategoryInput } from './dto/update-one-event-category.input';
+
 @Injectable()
 export class EventCategoryService {
+  updateOne(updateOneEventCategoryInput: UpdateOneEventCategoryInput) {
+    // Logic to update an event category in the database
+    // This is a placeholder implementation
+    return {
+      ...updateOneEventCategoryInput,
+      updatedAt: new Date(),
+      // The rest of the fields should be fetched and merged with the updated fields
+    };
+  }
   create(createEventCategoryInput: CreateEventCategoryInput) {
     return 'This action adds a new eventCategory';
   }

@@ -46,3 +46,11 @@ input CreateManyEventCategoriesInput {
 type Mutation {
   createManyEventCategories(input: CreateManyEventCategoriesInput!): [EventCategory!]!
 }
+input UpdateOneEventCategoryInput {
+  id: ID!
+  title: String
+}
+
+type Mutation {
+  updateOneEventCategory(input: UpdateOneEventCategoryInput!): EventCategory!
+}
