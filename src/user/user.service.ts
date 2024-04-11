@@ -68,4 +68,11 @@ export class UserService {
   remove(id: number) {
     return `This action removes a #${id} user`;
   }
+
+  deleteMany(deleteManyUsersInput: DeleteManyUsersInput) {
+    // Implementation logic to delete many users
+    // This is a placeholder implementation. You'll need to replace it with your actual database delete logic.
+    const deletedCount = deleteManyUsersInput.ids.length; // Placeholder for actual delete logic
+    return { deletedCount };
+  }
 }

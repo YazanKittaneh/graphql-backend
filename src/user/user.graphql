@@ -109,3 +109,15 @@ type Mutation {
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User
 }
+
+type DeleteManyResponse {
+  deletedCount: Int!
+}
+
+input DeleteManyUsersInput {
+  ids: [ID!]!
+}
+
+type Mutation {
+  deleteManyUsers(input: DeleteManyUsersInput!): DeleteManyResponse!
+}
