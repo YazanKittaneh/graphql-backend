@@ -8,44 +8,39 @@ import { User } from './entities/user.entity';
 export class UserService {
   constructor(@InjectRepository(User) private userRepository: Repository<User>) {}
 }
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { User, UserDocument } from './entities/user.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from './entities/user.entity';
+import { CreateUserInput } from './dto/create-user.input';
+import { UpdateUserInput } from './dto/update-user.input';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(@InjectRepository(User) private userRepository: Repository<User>) {}
 
   // Methods to be updated with MongoDB operations...
-  async findAll() {
-    return this.userRepository.find();
+  async findAll(): Promise<User[]> {
+    return await this.userRepository.find();
   }
 
-  async create(createUserInput: CreateUserInput) {
-    const newUser = this.userRepository.create(createUserInput);
-    await this.userRepository.save(newUser);
-    return newUser;
+  async create(createUserInput: CreateUserInput): Promise<User> {
+    return await this.userRepository.save(createUserInput);
   }
-  updateMany(updateManyUsersInput: UpdateManyUsersInput) {
-    // Implementation logic to update many users
-    // This is a placeholder implementation. You'll need to replace it with your actual database update logic.
-    const updatedCount = updateManyUsersInput.ids.length; // Placeholder for actual update logic
-    return { updatedCount };
+
+  // Assuming updateMany is not directly supported by TypeORM Repository API,
+  // you would need to implement custom logic for batch updates.
+
+  async update(id: string, updateUserInput: UpdateUserInput): Promise<User> {
+    await this.userRepository.update(id, updateUserInput);
+    return this.userRepository.findOne(id);
   }
-  updateOne(id: string, updateOneUserInput: UpdateOneUserInput) {
-    // Implementation logic to update one user
-    return `This action updates a user with id ${id}`;
-  }
-  createMany(createManyUsersInput: CreateManyUsersInput) {
-    // Implementation logic to create many users
-    return `This action adds new users with CreateManyUsersInput`;
-  }
-  createOne(createOneUserInput: CreateOneUserInput) {
-    // Implementation logic to create one user
-    return 'This action adds a new user with CreateOneUserInput';
-  }
+
+  // The createMany method would need to be adjusted to use TypeORM's save method
+  // with an array of CreateUserInput objects if you want to create multiple users at once.
+
+  // The createOne method is essentially the same as the create method and might not be needed as a separate method.
 
   create(createUserInput: CreateUserInput) {
     return 'This action adds a new user';
