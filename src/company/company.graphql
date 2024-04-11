@@ -56,3 +56,9 @@ input: CreateManyCompaniesInput!
 input CreateManyCompaniesInput {
   # Define the fields for CreateManyCompaniesInput as per requirements
 }
+updateOneCompany(
+input: UpdateOneCompanyInput!
+): Company!
+input UpdateOneCompanyInput {
+  # Define the fields for UpdateOneCompanyInput as per requirements
+}
