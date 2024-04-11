@@ -2,9 +2,9 @@ import { Injectable, NotImplementedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, In } from 'typeorm';
 import { User } from './entities/user.entity';
-import { CreateUserInput, CreateManyUsersInput, DeleteManyUsersInput } from './dto'; // Assuming CreateManyUsersInput and DeleteManyUsersInput are defined in the same dto index file
-
-
+import { CreateManyUsersInput } from './dto/create-many-users.input'; // Assuming CreateManyUsersInput and DeleteManyUsersInput are defined in the same dto index file
+import { CreateUserInput } from './dto/create-user.input'; // Assuming CreateManyUsersInput and DeleteManyUsersInput are defined in the same dto index file
+import { DeleteManyUsersInput } from './dto/delete-many-users.input'; // Assuming CreateManyUsersInput and DeleteManyUsersInput are defined in the same dto index file
 
 
 @Injectable()
@@ -23,19 +23,18 @@ export class UserService {
   // Assuming updateMany is not directly supported by TypeORM Repository API,
   // you would need to implement custom logic for batch updates.
 
-  async updateOne(id: string, updateUserInput: UpdateUserInput): Promise<User> {
+  async updateOne(id: string, updateUserInput: UpdateUserInput): Promise<User | null> {
     const user = await this.userRepository.findOne(id);
     if (!user) {
-      throw new Error('User not found');
+      return null; // Or throw a NotFoundException for better integration with NestJS HTTP exception filters
     }
     const updated = await this.userRepository.save({ ...user, ...updateUserInput });
     return updated;
   }
 
-  async deleteOne(deleteOneUserInput: DeleteOneUserInput): Promise<void> {
+  async deleteOne(id: string): Promise<boolean> {
     const { affected } = await this.userRepository.delete(deleteOneUserInput.id);
-    if (affected === 0) {
-      throw new Error('No user found to delete');
+    return affected > 0;
     }
   }
 }
@@ -44,16 +43,16 @@ export class UserService {
     return this.userRepository.save(users); // This method persists the prepared users into the database
   }
   
-  async updateMany(updateManyUsersInput: UpdateManyUsersInput): Promise<{ updatedCount: number }> {
+  async updateMany(updateManyUsersInput: UpdateManyUsersInput): Promise<number> {
     const { ids, ...updateData } = updateManyUsersInput;
     const { affected } = await this.userRepository.update(ids, updateData);
-    return { updatedCount: affected };
+    return affected;
   }
 
   async deleteMany(deleteManyUsersInput: DeleteManyUsersInput): Promise<{ deletedCount: number }> {
     const { affected } = await this.userRepository.delete(deleteManyUsersInput.ids);
-    if (!affected) {
-      throw new Error('No users found to delete');
+  async deleteMany(ids: string[]): Promise<number> {
+    const { affected } = await this.userRepository.delete(ids);
+    return affected;
     }
-    return { deletedCount: affected };
   }
