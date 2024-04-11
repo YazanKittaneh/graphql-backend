@@ -68,3 +68,7 @@ export class UserResolver {
   deleteMany(@Args('input') deleteManyUsersInput: DeleteManyUsersInput) {
     return this.userService.deleteMany(deleteManyUsersInput);
   }
+  @Mutation(() => [User])
+  createManyUsers(@Args('input') createManyUsersInput: CreateManyUsersInput) {
+    return this.userService.createMany(createManyUsersInput);
+  }
