@@ -98,3 +98,14 @@ type ContactDeleteResponse {
 type Mutation {
   deleteOneContact(input: DeleteOneContactInput!): ContactDeleteResponse!
 }
+input DeleteManyContactsInput {
+  ids: [ID!]!
+}
+
+type DeleteManyResponse {
+  deletedCount: Int!
+}
+
+type Mutation {
+  deleteManyContacts(input: DeleteManyContactsInput!): DeleteManyResponse!
+}
