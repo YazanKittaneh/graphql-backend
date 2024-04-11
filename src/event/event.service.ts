@@ -24,3 +24,17 @@ export class EventService {
     return `This action removes a #${id} event`;
   }
 }
+  create(createOneEventInput: CreateOneEventInput) {
+    // Logic to create an event in the database
+    // This is a placeholder implementation
+    return {
+      id: '1', // Placeholder ID
+      ...createOneEventInput,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      createdBy: {}, // Placeholder user
+      updatedBy: {}, // Placeholder user
+      category: {}, // Placeholder event category
+      participants: [], // Placeholder participants
+    };
+  }

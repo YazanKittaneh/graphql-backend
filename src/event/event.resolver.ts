@@ -32,3 +32,7 @@ export class EventResolver {
     return this.eventService.remove(id);
   }
 }
+  @Mutation('createOneEvent')
+  createOne(@Args('input') createOneEventInput: CreateOneEventInput) {
+    return this.eventService.create(createOneEventInput);
+  }

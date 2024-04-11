@@ -22,3 +22,30 @@ type Mutation {
   updateEvent(updateEventInput: UpdateEventInput!): Event!
   removeEvent(id: Int!): Event
 }
+input CreateOneEventInput {
+  title: String!
+  description: String!
+  startDate: DateTime!
+  endDate: DateTime!
+  color: String!
+  categoryId: ID!
+}
+
+type Event {
+  id: ID!
+  title: String!
+  description: String!
+  startDate: DateTime!
+  endDate: DateTime!
+  color: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User!
+  updatedBy: User
+  category: EventCategory!
+  participants: [User!]!
+}
+
+type Mutation {
+  createOneEvent(input: CreateOneEventInput!): Event!
+}
