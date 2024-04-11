@@ -66,3 +66,17 @@ export class EventService {
       updatedCount,
     };
   }
+  deleteOne(deleteOneEventInput: DeleteOneEventInput): EventDeleteResponse {
+    // Placeholder logic for deleting an event
+    // This should include logic to actually delete the event from the database
+    return {
+      id: deleteOneEventInput.id,
+      title: "Deleted Event", // Placeholder data
+      description: "This event has been deleted.",
+      startDate: new Date(),
+      endDate: new Date(),
+      color: "gray",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+  }

@@ -80,3 +80,21 @@ type UpdateManyResponse {
 type Mutation {
   updateManyEvents(input: UpdateManyEventsInput!): UpdateManyResponse!
 }
+input DeleteOneEventInput {
+  id: ID!
+}
+
+type EventDeleteResponse {
+  id: ID
+  title: String
+  description: String
+  startDate: DateTime
+  endDate: DateTime
+  color: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Mutation {
+  deleteOneEvent(input: DeleteOneEventInput!): EventDeleteResponse!
+}

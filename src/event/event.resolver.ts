@@ -48,3 +48,7 @@ export class EventResolver {
   updateManyEvents(@Args('input') updateManyEventsInput: UpdateManyEventsInput) {
     return this.eventService.updateMany(updateManyEventsInput);
   }
+  @Mutation(() => EventDeleteResponse)
+  deleteOneEvent(@Args('input') deleteOneEventInput: DeleteOneEventInput) {
+    return this.eventService.deleteOne(deleteOneEventInput);
+  }
