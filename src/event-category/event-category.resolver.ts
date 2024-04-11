@@ -55,3 +55,7 @@ class EventCategoryResolver {
   deleteOne(@Args('input') deleteOneEventCategoryInput: DeleteOneEventCategoryInput) {
     return this.eventCategoryService.deleteOne(deleteOneEventCategoryInput);
   }
+  @Mutation('deleteManyEventCategories')
+  deleteMany(@Args('input') deleteManyEventCategoriesInput: DeleteManyEventCategoriesInput) {
+    return this.eventCategoryService.deleteMany(deleteManyEventCategoriesInput);
+  }

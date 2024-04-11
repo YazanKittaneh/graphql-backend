@@ -82,3 +82,11 @@ export class EventCategoryService {
       updatedAt: new Date(), // Placeholder updatedAt
     };
   }
+  deleteMany(deleteManyEventCategoriesInput: DeleteManyEventCategoriesInput): DeleteManyResponse {
+    // Logic to delete many event categories from the database
+    // This is a placeholder implementation
+    const deletedCount = deleteManyEventCategoriesInput.ids.length; // Placeholder deleted count
+    return {
+      deletedCount,
+    };
+  }

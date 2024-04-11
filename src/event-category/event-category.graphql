@@ -80,3 +80,14 @@ type EventCategoryDeleteResponse {
 type Mutation {
   deleteOneEventCategory(input: DeleteOneEventCategoryInput!): EventCategoryDeleteResponse!
 }
+input DeleteManyEventCategoriesInput {
+  ids: [ID!]!
+}
+
+type DeleteManyResponse {
+  deletedCount: Int!
+}
+
+type Mutation {
+  deleteManyEventCategories(input: DeleteManyEventCategoriesInput!): DeleteManyResponse!
+}
