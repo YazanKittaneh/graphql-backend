@@ -51,10 +51,28 @@ input CreateManyContactsInput {
   contacts: [CreateOneContactInput!]!
 }
 
+input UpdateOneContactInput {
+  id: ID!
+  name: String
+  email: String
+  phone: String
+  jobTitle: String
+  timezone: String
+  avatarUrl: String
+  stage: ContactStage
+  status: ContactStatus
+  score: Int
+  updatedAt: DateTime
+  updatedBy: User
+  salesOwner: User
+  company: Company
+}
+
 type Mutation {
   createContact(createContactInput: CreateContactInput!): Contact!
   createOneContact(input: CreateOneContactInput!): Contact!
   createManyContacts(input: CreateManyContactsInput!): [Contact!]!
+  updateOneContact(input: UpdateOneContactInput!): Contact!
   updateContact(updateContactInput: UpdateContactInput!): Contact!
   removeContact(id: Int!): Contact
 }

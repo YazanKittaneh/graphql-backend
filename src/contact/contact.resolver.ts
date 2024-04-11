@@ -4,10 +4,16 @@ import { CreateContactInput } from './dto/create-contact.input';
 import { UpdateContactInput } from './dto/update-contact.input';
 import { CreateOneContactInput } from './dto/create-one-contact.input';
 import { CreateManyContactsInput } from './dto/create-many-contacts.input';
+import { UpdateOneContactInput } from './dto/update-one-contact.input';
 
 @Resolver('Contact')
 export class ContactResolver {
   constructor(private readonly contactService: ContactService) {}
+
+  @Mutation('updateOneContact')
+  updateOne(@Args('input') updateOneContactInput: UpdateOneContactInput) {
+    return this.contactService.updateOne(updateOneContactInput.id, updateOneContactInput);
+  }
 
   @Mutation('createManyContacts')
   createMany(@Args('input') createManyContactsInput: CreateManyContactsInput) {
