@@ -36,3 +36,7 @@ export class EventResolver {
   createOne(@Args('input') createOneEventInput: CreateOneEventInput) {
     return this.eventService.create(createOneEventInput);
   }
+  @Mutation('createManyEvents')
+  createMany(@Args('input') createManyEventsInput: CreateManyEventsInput) {
+    return this.eventService.createMany(createManyEventsInput);
+  }

@@ -49,3 +49,10 @@ type Event {
 type Mutation {
   createOneEvent(input: CreateOneEventInput!): Event!
 }
+input CreateManyEventsInput {
+  events: [CreateOneEventInput!]!
+}
+
+type Mutation {
+  createManyEvents(input: CreateManyEventsInput!): [Event!]!
+}

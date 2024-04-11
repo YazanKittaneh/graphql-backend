@@ -38,3 +38,15 @@ export class EventService {
       participants: [], // Placeholder participants
     };
   }
+  createMany(createManyEventsInput: CreateManyEventsInput) {
+    return createManyEventsInput.events.map((eventInput, index) => ({
+      id: String(index + 1), // Placeholder ID generation logic
+      ...eventInput,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      createdBy: {}, // Placeholder createdBy user
+      updatedBy: {}, // Placeholder updatedBy user
+      category: {}, // Placeholder event category
+      participants: [], // Placeholder participants array
+    }));
+  }
