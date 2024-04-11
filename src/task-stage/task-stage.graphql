@@ -1,0 +1,24 @@
+type TaskStage {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateTaskStageInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateTaskStageInput {
+  id: Int!
+}
+
+type Query {
+  taskStage: [TaskStage]!
+  taskStage(id: Int!): TaskStage
+}
+
+type Mutation {
+  createTaskStage(createTaskStageInput: CreateTaskStageInput!): TaskStage!
+  updateTaskStage(updateTaskStageInput: UpdateTaskStageInput!): TaskStage!
+  removeTaskStage(id: Int!): TaskStage
+}
