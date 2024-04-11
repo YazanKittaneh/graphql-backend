@@ -50,3 +50,12 @@ export class EventService {
       participants: [], // Placeholder participants array
     }));
   }
+  updateOne(updateOneEventInput: UpdateOneEventInput): Event {
+    // Placeholder logic for updating an event
+    return {
+      id: updateOneEventInput.id,
+      ...updateOneEventInput,
+      updatedAt: new Date(), // Update the updatedAt field to the current time
+      // The rest of the fields should be fetched and merged with the updated fields
+    };
+  }

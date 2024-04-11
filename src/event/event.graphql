@@ -56,3 +56,16 @@ input CreateManyEventsInput {
 type Mutation {
   createManyEvents(input: CreateManyEventsInput!): [Event!]!
 }
+input UpdateOneEventInput {
+  id: ID!
+  title: String
+  description: String
+  startDate: DateTime
+  endDate: DateTime
+  color: String
+  categoryId: ID
+}
+
+type Mutation {
+  updateOneEvent(input: UpdateOneEventInput!): Event!
+}

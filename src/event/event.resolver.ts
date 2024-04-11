@@ -40,3 +40,7 @@ export class EventResolver {
   createMany(@Args('input') createManyEventsInput: CreateManyEventsInput) {
     return this.eventService.createMany(createManyEventsInput);
   }
+  @Mutation(() => Event)
+  updateOneEvent(@Args('input') updateOneEventInput: UpdateOneEventInput) {
+    return this.eventService.updateOne(updateOneEventInput);
+  }
