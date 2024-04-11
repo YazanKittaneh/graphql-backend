@@ -37,4 +37,4 @@ export class UserService {
     const users = this.userRepository.create(createManyUsersInput.users); // This method prepares the array of users for insertion
     return this.userRepository.save(users); // This method persists the prepared users into the database
   }
-  }
+  
