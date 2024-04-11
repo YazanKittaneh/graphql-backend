@@ -1,6 +1,23 @@
 type Contact {
-  # Example field (placeholder)
-  exampleField: Int
+  id: ID!
+  name: String!
+  email: String!
+  phone: String
+  jobTitle: String
+  timezone: String
+  avatarUrl: String
+  stage: ContactStage!
+  status: ContactStatus!
+  score: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User!
+  updatedBy: User
+  salesOwner: User!
+  company: Company!
+  deals(...): ContactDealsConnection!
+  notes(...): ContactNotesConnection!
+}
 }
 
 input CreateContactInput {
