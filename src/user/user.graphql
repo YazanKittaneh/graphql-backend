@@ -96,18 +96,16 @@ type Query {
   user: [User]!
   user(id: Int!): User
 }
+type Mutation {
+  deleteManyUsers(input: DeleteManyUsersInput!): DeleteManyResponse!
+}
+
 type DeleteManyResponse {
   deletedCount: Int!
 }
 
 input DeleteManyUsersInput {
   ids: [ID!]!
-}
-
-type Mutation {
-  createUser(createUserInput: CreateUserInput!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User
 }
 
 type DeleteManyResponse {
