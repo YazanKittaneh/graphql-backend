@@ -1,15 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserInput } from './dto/create-user.input';
-import { CreateOneUserInput } from './dto/create-one-user.input';
-import { UpdateUserInput } from './dto/update-user.input';
-import { CreateManyUsersInput } from './dto/create-many-users.input';
-import { UpdateOneUserInput } from './dto/update-one-user.input';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
-import { UpdateManyUsersInput } from './dto/update-many-users.input';
+import { User } from './entities/user.entity';
 
-import { DeleteOneUserInput } from './dto/delete-one-user.input';
-import { DeleteManyUsersInput } from './dto/delete-many-users.input';
-import { CreateManyUsersInput } from './dto/create-many-users.input';
+@Injectable()
+export class UserService {
+  constructor(@InjectRepository(User) private userRepository: Repository<User>) {}
+}
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from './entities/user.entity';
@@ -21,23 +19,14 @@ export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   // Methods to be updated with MongoDB operations...
-  deleteOne(id: string) {
-    // Implementation logic to delete one user
-    // This is a placeholder implementation. You'll need to replace it with your actual database delete logic.
-    // Assuming the deletion was successful and we have the deleted user's details:
-    const deletedUser = {
-      id: id,
-      name: "Deleted User",
-      email: "deleted@example.com",
-      phone: "1234567890",
-      jobTitle: "Former Employee",
-      timezone: "UTC",
-      role: "User",
-      avatarUrl: "https://example.com/avatar.png",
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-    return deletedUser;
+  async findAll() {
+    return this.userRepository.find();
+  }
+
+  async create(createUserInput: CreateUserInput) {
+    const newUser = this.userRepository.create(createUserInput);
+    await this.userRepository.save(newUser);
+    return newUser;
   }
   updateMany(updateManyUsersInput: UpdateManyUsersInput) {
     // Implementation logic to update many users
