@@ -1,9 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, In } from 'typeorm';
 import { User } from './entities/user.entity';
-import { CreateUserInput } from './dto/create-user.input';
-import { UpdateUserInput } from './dto/update-user.input';
+import { CreateUserInput, CreateManyUsersInput, DeleteManyUsersInput } from './dto'; // Assuming CreateManyUsersInput and DeleteManyUsersInput are defined in the same dto index file
 
 
 
@@ -29,28 +28,13 @@ export class UserService {
     return this.userRepository.findOne(id);
   }
 
-  deleteMany(deleteManyUsersInput: DeleteManyUsersInput) {
-    // Implementation logic to delete many users
-    // This is a placeholder implementation. You'll need to replace it with your actual database delete logic.
-    const deletedCount = deleteManyUsersInput.ids.length; // Placeholder for actual delete logic
-    return { deletedCount };
+  async deleteMany(deleteManyUsersInput: DeleteManyUsersInput): Promise<{ deletedCount: number }> {
+    const { affected } = await this.userRepository.delete(deleteManyUsersInput.ids);
+    return { deletedCount: affected };
   }
 }
-  createMany(createManyUsersInput: CreateManyUsersInput) {
-    // Implementation logic to create many users
-    // This is a placeholder implementation. You'll need to replace it with your actual database creation logic.
-    // Assuming each user is created successfully and we return their details:
-    return createManyUsersInput.users.map(userInput => ({
-      id: Math.floor(Math.random() * 10000).toString(), // Placeholder for actual ID generation logic
-      ...userInput,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      createdBy: null, // Placeholder, adjust according to your user creation logic
-      updatedBy: null, // Placeholder, adjust according to your user update logic
-      companies: [], // Placeholder, adjust according to your companies connection logic
-      contacts: [], // Placeholder, adjust according to your contacts connection logic
-      events: [], // Placeholder, adjust according to your events connection logic
-      tasks: [], // Placeholder, adjust according to your tasks connection logic
-      deals: [], // Placeholder, adjust according to your deals connection logic
-    }));
+  async createMany(createManyUsersInput: CreateManyUsersInput): Promise<User[]> {
+    const users = this.userRepository.create(createManyUsersInput.users); // This method prepares the array of users for insertion
+    return this.userRepository.save(users); // This method persists the prepared users into the database
+  }
   }
