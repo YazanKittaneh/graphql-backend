@@ -10,9 +10,17 @@ import { UpdateManyUsersInput } from './dto/update-many-users.input';
 import { DeleteOneUserInput } from './dto/delete-one-user.input';
 import { DeleteManyUsersInput } from './dto/delete-many-users.input';
 import { CreateManyUsersInput } from './dto/create-many-users.input';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { User, UserDocument } from './entities/user.entity';
+import { CreateUserInput } from './dto/create-user.input';
+import { UpdateUserInput } from './dto/update-user.input';
 
 @Injectable()
 export class UserService {
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+
+  // Methods to be updated with MongoDB operations...
   deleteOne(id: string) {
     // Implementation logic to delete one user
     // This is a placeholder implementation. You'll need to replace it with your actual database delete logic.
