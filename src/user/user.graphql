@@ -1,6 +1,21 @@
 type User {
-  # Example field (placeholder)
-  exampleField: Int
+  id: ID!
+  name: String!
+  email: String!
+  phone: String
+  jobTitle: String
+  timezone: String
+  role: Role!
+  avatarUrl: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User
+  updatedBy: User
+  companies: UserCompaniesConnection!
+  contacts: UserContactsConnection!
+  events: UserEventsConnection!
+  tasks: UserTasksConnection!
+  deals: UserDealsConnection!
 }
 
 input CreateUserInput {
