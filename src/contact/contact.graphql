@@ -47,9 +47,14 @@ type Query {
   contact(id: Int!): Contact
 }
 
+input CreateManyContactsInput {
+  contacts: [CreateOneContactInput!]!
+}
+
 type Mutation {
   createContact(createContactInput: CreateContactInput!): Contact!
   createOneContact(input: CreateOneContactInput!): Contact!
+  createManyContacts(input: CreateManyContactsInput!): [Contact!]!
   updateContact(updateContactInput: UpdateContactInput!): Contact!
   removeContact(id: Int!): Contact
 }
