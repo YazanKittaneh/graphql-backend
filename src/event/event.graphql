@@ -69,3 +69,14 @@ input UpdateOneEventInput {
 type Mutation {
   updateOneEvent(input: UpdateOneEventInput!): Event!
 }
+input UpdateManyEventsInput {
+  events: [UpdateOneEventInput!]!
+}
+
+type UpdateManyResponse {
+  updatedCount: Int!
+}
+
+type Mutation {
+  updateManyEvents(input: UpdateManyEventsInput!): UpdateManyResponse!
+}

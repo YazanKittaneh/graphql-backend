@@ -59,3 +59,10 @@ export class EventService {
       // The rest of the fields should be fetched and merged with the updated fields
     };
   }
+  updateMany(updateManyEventsInput: UpdateManyEventsInput): UpdateManyResponse {
+    const updatedCount = updateManyEventsInput.events.length; // Placeholder logic for updating many events
+    // Actual implementation would involve iterating over the events, updating them, and tracking the count of successfully updated events.
+    return {
+      updatedCount,
+    };
+  }

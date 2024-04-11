@@ -44,3 +44,7 @@ export class EventResolver {
   updateOneEvent(@Args('input') updateOneEventInput: UpdateOneEventInput) {
     return this.eventService.updateOne(updateOneEventInput);
   }
+  @Mutation(() => UpdateManyResponse)
+  updateManyEvents(@Args('input') updateManyEventsInput: UpdateManyEventsInput) {
+    return this.eventService.updateMany(updateManyEventsInput);
+  }
