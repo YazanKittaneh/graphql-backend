@@ -11,7 +11,7 @@ import { CreateUserInput, CreateManyUsersInput, DeleteManyUsersInput } from './d
 export class UserService {
   constructor(@InjectRepository(User) private userRepository: Repository<User>) {}
 
-  // Methods to be updated with MongoDB operations...
+  // Corrected and implemented methods
   async findAll(): Promise<User[]> {
     return await this.userRepository.find();
   }
@@ -23,14 +23,20 @@ export class UserService {
   // Assuming updateMany is not directly supported by TypeORM Repository API,
   // you would need to implement custom logic for batch updates.
 
-  async update(id: string, updateUserInput: UpdateUserInput): Promise<User> {
-    await this.userRepository.update(id, updateUserInput);
-    return this.userRepository.findOne(id);
+  async updateOne(id: string, updateUserInput: UpdateUserInput): Promise<User> {
+    const user = await this.userRepository.findOne(id);
+    if (!user) {
+      throw new Error('User not found');
+    }
+    const updated = await this.userRepository.save({ ...user, ...updateUserInput });
+    return updated;
   }
 
-  async deleteMany(deleteManyUsersInput: DeleteManyUsersInput): Promise<{ deletedCount: number }> {
-    const { affected } = await this.userRepository.delete(deleteManyUsersInput.ids);
-    return { deletedCount: affected };
+  async deleteOne(deleteOneUserInput: DeleteOneUserInput): Promise<void> {
+    const { affected } = await this.userRepository.delete(deleteOneUserInput.id);
+    if (affected === 0) {
+      throw new Error('No user found to delete');
+    }
   }
 }
   async createMany(createManyUsersInput: CreateManyUsersInput): Promise<User[]> {
@@ -38,3 +44,16 @@ export class UserService {
     return this.userRepository.save(users); // This method persists the prepared users into the database
   }
   
+  async updateMany(updateManyUsersInput: UpdateManyUsersInput): Promise<{ updatedCount: number }> {
+    const { ids, ...updateData } = updateManyUsersInput;
+    const { affected } = await this.userRepository.update(ids, updateData);
+    return { updatedCount: affected };
+  }
+
+  async deleteMany(deleteManyUsersInput: DeleteManyUsersInput): Promise<{ deletedCount: number }> {
+    const { affected } = await this.userRepository.delete(deleteManyUsersInput.ids);
+    if (!affected) {
+      throw new Error('No users found to delete');
+    }
+    return { deletedCount: affected };
+  }
