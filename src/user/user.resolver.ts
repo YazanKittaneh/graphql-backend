@@ -9,6 +9,7 @@ import { UpdateOneUserInput } from './dto/update-one-user.input';
 import { UpdateManyUsersInput } from './dto/update-many-users.input';
 
 import { DeleteOneUserInput } from './dto/delete-one-user.input';
+import { DeleteManyUsersInput } from './dto/delete-many-users.input';
 
 @Resolver('User')
 export class UserResolver {

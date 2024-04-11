@@ -74,6 +74,13 @@ type UserDeleteResponse {
   createdAt: DateTime
   updatedAt: DateTime
 }
+type DeleteManyResponse {
+  deletedCount: Int!
+}
+
+input DeleteManyUsersInput {
+  ids: [ID!]!
+}
 
 type Mutation {
   deleteOneUser(input: DeleteOneUserInput!): UserDeleteResponse!
@@ -88,6 +95,13 @@ type Mutation {
 type Query {
   user: [User]!
   user(id: Int!): User
+}
+type DeleteManyResponse {
+  deletedCount: Int!
+}
+
+input DeleteManyUsersInput {
+  ids: [ID!]!
 }
 
 type Mutation {
