@@ -21,7 +21,7 @@ export class TaskStageService {
   }
 
   async findOne(id: number): Promise<TaskStage> {
-    return this.taskStageRepository.findOne(id);
+    return this.taskStageRepository.findOne({ where: { id } });
   }
 
   async update(
@@ -29,7 +29,7 @@ export class TaskStageService {
     updateTaskStageInput: UpdateTaskStageInput,
   ): Promise<number> {
     await this.taskStageRepository.update(id, updateTaskStageInput);
-    return this.taskStageRepository.findOne(id);
+    return this.taskStageRepository.findOne({ where: { id } });
   }
 
   async remove(id: number): Promise<void> {
