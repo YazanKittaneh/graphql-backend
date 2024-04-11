@@ -40,3 +40,16 @@ export class EventCategoryService {
     return `This action removes a #${id} eventCategory`;
   }
 }
+  createMany(createOneEventCategoryInputs: CreateOneEventCategoryInput[]) {
+    // Logic to create multiple event categories in the database
+    // This is a placeholder implementation
+    return createOneEventCategoryInputs.map((input, index) => ({
+      id: String(index + 1), // Placeholder ID
+      ...input,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      createdBy: {}, // Placeholder user
+      updatedBy: {}, // Placeholder user
+      events: [], // Placeholder events
+    }));
+  }

@@ -39,3 +39,7 @@ class EventCategoryResolver {
     return this.eventCategoryService.remove(id);
   }
 }
+  @Mutation('createManyEventCategories')
+  createMany(@Args('input') createManyEventCategoriesInput: CreateManyEventCategoriesInput) {
+    return this.eventCategoryService.createMany(createManyEventCategoriesInput.categories);
+  }

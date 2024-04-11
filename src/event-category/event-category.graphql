@@ -39,3 +39,10 @@ input CreateOneEventCategoryInput {
 type Mutation {
   createOneEventCategory(input: CreateOneEventCategoryInput!): EventCategory!
 }
+input CreateManyEventCategoriesInput {
+  categories: [CreateOneEventCategoryInput!]!
+}
+
+type Mutation {
+  createManyEventCategories(input: CreateManyEventCategoriesInput!): [EventCategory!]!
+}
