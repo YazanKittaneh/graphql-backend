@@ -76,3 +76,25 @@ type Mutation {
   updateContact(updateContactInput: UpdateContactInput!): Contact!
   removeContact(id: Int!): Contact
 }
+input DeleteOneContactInput {
+  id: ID!
+}
+
+type ContactDeleteResponse {
+  id: ID
+  name: String
+  email: String
+  phone: String
+  jobTitle: String
+  timezone: String
+  avatarUrl: String
+  stage: ContactStage
+  status: ContactStatus
+  score: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type Mutation {
+  deleteOneContact(input: DeleteOneContactInput!): ContactDeleteResponse!
+}
