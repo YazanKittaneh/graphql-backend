@@ -62,3 +62,12 @@ input: UpdateOneCompanyInput!
 input UpdateOneCompanyInput {
   # Define the fields for UpdateOneCompanyInput as per requirements
 }
+updateManyCompanies(
+input: UpdateManyCompaniesInput!
+): UpdateManyResponse!
+type UpdateManyResponse {
+updatedCount: Int!
+}
+input UpdateManyCompaniesInput {
+  # Define the fields for UpdateManyCompaniesInput as per requirements
+}
