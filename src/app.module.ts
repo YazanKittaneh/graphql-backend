@@ -2,6 +2,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
@@ -43,6 +44,17 @@ import { AuditConnectionModule } from './audit-connection/audit-connection.modul
       autoLoadEntities: true,
       synchronize: true,
       logging: true,
+    }),
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'password',
+      database: 'mydatabase',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
