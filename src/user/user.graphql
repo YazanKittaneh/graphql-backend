@@ -18,13 +18,20 @@ type User {
   deals: UserDealsConnection!
 }
 
-input CreateUserInput {
-  # Example field (placeholder)
-  exampleField: Int
+input CreateOneUserInput {
+  name: String!
+  email: String!
+  phone: String
+  jobTitle: String
+  timezone: String
+  role: Role!
+  avatarUrl: String
 }
 
-input UpdateUserInput {
-  id: Int!
+type Mutation {
+  createOneUser(input: CreateOneUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User
 }
 
 type Query {
