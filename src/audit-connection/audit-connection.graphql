@@ -1,0 +1,24 @@
+type AuditConnection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateAuditConnectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateAuditConnectionInput {
+  id: Int!
+}
+
+type Query {
+  auditConnection: [AuditConnection]!
+  auditConnection(id: Int!): AuditConnection
+}
+
+type Mutation {
+  createAuditConnection(createAuditConnectionInput: CreateAuditConnectionInput!): AuditConnection!
+  updateAuditConnection(updateAuditConnectionInput: UpdateAuditConnectionInput!): AuditConnection!
+  removeAuditConnection(id: Int!): AuditConnection
+}

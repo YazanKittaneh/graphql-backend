@@ -1,0 +1,24 @@
+type Deal {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateDealInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateDealInput {
+  id: Int!
+}
+
+type Query {
+  deal: [Deal]!
+  deal(id: Int!): Deal
+}
+
+type Mutation {
+  createDeal(createDealInput: CreateDealInput!): Deal!
+  updateDeal(updateDealInput: UpdateDealInput!): Deal!
+  removeDeal(id: Int!): Deal
+}

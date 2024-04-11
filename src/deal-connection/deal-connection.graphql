@@ -1,0 +1,24 @@
+type DealConnection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateDealConnectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateDealConnectionInput {
+  id: Int!
+}
+
+type Query {
+  dealConnection: [DealConnection]!
+  dealConnection(id: Int!): DealConnection
+}
+
+type Mutation {
+  createDealConnection(createDealConnectionInput: CreateDealConnectionInput!): DealConnection!
+  updateDealConnection(updateDealConnectionInput: UpdateDealConnectionInput!): DealConnection!
+  removeDealConnection(id: Int!): DealConnection
+}

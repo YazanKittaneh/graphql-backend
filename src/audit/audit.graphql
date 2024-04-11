@@ -1,0 +1,24 @@
+type Audit {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateAuditInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateAuditInput {
+  id: Int!
+}
+
+type Query {
+  audit: [Audit]!
+  audit(id: Int!): Audit
+}
+
+type Mutation {
+  createAudit(createAuditInput: CreateAuditInput!): Audit!
+  updateAudit(updateAuditInput: UpdateAuditInput!): Audit!
+  removeAudit(id: Int!): Audit
+}

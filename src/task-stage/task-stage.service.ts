@@ -27,7 +27,7 @@ export class TaskStageService {
   async update(
     id: number,
     updateTaskStageInput: UpdateTaskStageInput,
-  ): Promise<number> {
+  ): Promise<TaskStage> {
     await this.taskStageRepository.update(id, updateTaskStageInput);
     return this.taskStageRepository.findOne({ where: { id } });
   }

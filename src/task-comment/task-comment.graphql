@@ -1,0 +1,24 @@
+type TaskComment {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateTaskCommentInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateTaskCommentInput {
+  id: Int!
+}
+
+type Query {
+  taskComment: [TaskComment]!
+  taskComment(id: Int!): TaskComment
+}
+
+type Mutation {
+  createTaskComment(createTaskCommentInput: CreateTaskCommentInput!): TaskComment!
+  updateTaskComment(updateTaskCommentInput: UpdateTaskCommentInput!): TaskComment!
+  removeTaskComment(id: Int!): TaskComment
+}

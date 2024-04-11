@@ -1,0 +1,24 @@
+type DealStageConnection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateDealStageConnectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateDealStageConnectionInput {
+  id: Int!
+}
+
+type Query {
+  dealStageConnection: [DealStageConnection]!
+  dealStageConnection(id: Int!): DealStageConnection
+}
+
+type Mutation {
+  createDealStageConnection(createDealStageConnectionInput: CreateDealStageConnectionInput!): DealStageConnection!
+  updateDealStageConnection(updateDealStageConnectionInput: UpdateDealStageConnectionInput!): DealStageConnection!
+  removeDealStageConnection(id: Int!): DealStageConnection
+}

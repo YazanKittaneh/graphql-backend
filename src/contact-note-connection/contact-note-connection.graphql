@@ -1,0 +1,24 @@
+type ContactNoteConnection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateContactNoteConnectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateContactNoteConnectionInput {
+  id: Int!
+}
+
+type Query {
+  contactNoteConnection: [ContactNoteConnection]!
+  contactNoteConnection(id: Int!): ContactNoteConnection
+}
+
+type Mutation {
+  createContactNoteConnection(createContactNoteConnectionInput: CreateContactNoteConnectionInput!): ContactNoteConnection!
+  updateContactNoteConnection(updateContactNoteConnectionInput: UpdateContactNoteConnectionInput!): ContactNoteConnection!
+  removeContactNoteConnection(id: Int!): ContactNoteConnection
+}

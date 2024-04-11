@@ -1,0 +1,24 @@
+type DealAggregateResponse {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateDealAggregateResponseInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateDealAggregateResponseInput {
+  id: Int!
+}
+
+type Query {
+  dealAggregateResponse: [DealAggregateResponse]!
+  dealAggregateResponse(id: Int!): DealAggregateResponse
+}
+
+type Mutation {
+  createDealAggregateResponse(createDealAggregateResponseInput: CreateDealAggregateResponseInput!): DealAggregateResponse!
+  updateDealAggregateResponse(updateDealAggregateResponseInput: UpdateDealAggregateResponseInput!): DealAggregateResponse!
+  removeDealAggregateResponse(id: Int!): DealAggregateResponse
+}

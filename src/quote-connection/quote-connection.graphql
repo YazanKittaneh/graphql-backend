@@ -1,0 +1,24 @@
+type QuoteConnection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateQuoteConnectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateQuoteConnectionInput {
+  id: Int!
+}
+
+type Query {
+  quoteConnection: [QuoteConnection]!
+  quoteConnection(id: Int!): QuoteConnection
+}
+
+type Mutation {
+  createQuoteConnection(createQuoteConnectionInput: CreateQuoteConnectionInput!): QuoteConnection!
+  updateQuoteConnection(updateQuoteConnectionInput: UpdateQuoteConnectionInput!): QuoteConnection!
+  removeQuoteConnection(id: Int!): QuoteConnection
+}

@@ -1,0 +1,24 @@
+type CompanyNoteConnection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateCompanyNoteConnectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateCompanyNoteConnectionInput {
+  id: Int!
+}
+
+type Query {
+  companyNoteConnection: [CompanyNoteConnection]!
+  companyNoteConnection(id: Int!): CompanyNoteConnection
+}
+
+type Mutation {
+  createCompanyNoteConnection(createCompanyNoteConnectionInput: CreateCompanyNoteConnectionInput!): CompanyNoteConnection!
+  updateCompanyNoteConnection(updateCompanyNoteConnectionInput: UpdateCompanyNoteConnectionInput!): CompanyNoteConnection!
+  removeCompanyNoteConnection(id: Int!): CompanyNoteConnection
+}

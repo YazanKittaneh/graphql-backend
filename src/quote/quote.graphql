@@ -1,0 +1,24 @@
+type Quote {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateQuoteInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateQuoteInput {
+  id: Int!
+}
+
+type Query {
+  quote: [Quote]!
+  quote(id: Int!): Quote
+}
+
+type Mutation {
+  createQuote(createQuoteInput: CreateQuoteInput!): Quote!
+  updateQuote(updateQuoteInput: UpdateQuoteInput!): Quote!
+  removeQuote(id: Int!): Quote
+}

@@ -1,0 +1,24 @@
+type TaskCommentConnection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateTaskCommentConnectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateTaskCommentConnectionInput {
+  id: Int!
+}
+
+type Query {
+  taskCommentConnection: [TaskCommentConnection]!
+  taskCommentConnection(id: Int!): TaskCommentConnection
+}
+
+type Mutation {
+  createTaskCommentConnection(createTaskCommentConnectionInput: CreateTaskCommentConnectionInput!): TaskCommentConnection!
+  updateTaskCommentConnection(updateTaskCommentConnectionInput: UpdateTaskCommentConnectionInput!): TaskCommentConnection!
+  removeTaskCommentConnection(id: Int!): TaskCommentConnection
+}

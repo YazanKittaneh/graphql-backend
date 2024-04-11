@@ -1,0 +1,24 @@
+type TaskStageConnection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateTaskStageConnectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateTaskStageConnectionInput {
+  id: Int!
+}
+
+type Query {
+  taskStageConnection: [TaskStageConnection]!
+  taskStageConnection(id: Int!): TaskStageConnection
+}
+
+type Mutation {
+  createTaskStageConnection(createTaskStageConnectionInput: CreateTaskStageConnectionInput!): TaskStageConnection!
+  updateTaskStageConnection(updateTaskStageConnectionInput: UpdateTaskStageConnectionInput!): TaskStageConnection!
+  removeTaskStageConnection(id: Int!): TaskStageConnection
+}

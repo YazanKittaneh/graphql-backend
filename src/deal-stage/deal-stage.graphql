@@ -1,0 +1,24 @@
+type DealStage {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateDealStageInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateDealStageInput {
+  id: Int!
+}
+
+type Query {
+  dealStage: [DealStage]!
+  dealStage(id: Int!): DealStage
+}
+
+type Mutation {
+  createDealStage(createDealStageInput: CreateDealStageInput!): DealStage!
+  updateDealStage(updateDealStageInput: UpdateDealStageInput!): DealStage!
+  removeDealStage(id: Int!): DealStage
+}

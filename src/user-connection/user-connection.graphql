@@ -1,0 +1,24 @@
+type UserConnection {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateUserConnectionInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateUserConnectionInput {
+  id: Int!
+}
+
+type Query {
+  userConnection: [UserConnection]!
+  userConnection(id: Int!): UserConnection
+}
+
+type Mutation {
+  createUserConnection(createUserConnectionInput: CreateUserConnectionInput!): UserConnection!
+  updateUserConnection(updateUserConnectionInput: UpdateUserConnectionInput!): UserConnection!
+  removeUserConnection(id: Int!): UserConnection
+}
