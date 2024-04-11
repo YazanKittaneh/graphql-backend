@@ -1,26 +1,36 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateQuoteInput } from './dto/create-quote.input';
 import { UpdateQuoteInput } from './dto/update-quote.input';
+import { Quote } from './entities/quote.entity';
+
 
 @Injectable()
 export class QuoteService {
+  constructor(
+    @InjectRepository(Quote)
+    private quoteRepository: Repository<Quote>,
+  ) {}
+export class QuoteService {
   create(createQuoteInput: CreateQuoteInput) {
-    return 'This action adds a new quote';
+    const newQuote = this.quoteRepository.create(createQuoteInput);
+    return this.quoteRepository.save(newQuote);
   }
 
   findAll() {
-    return `This action returns all quote`;
+    return this.quoteRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} quote`;
+    return this.quoteRepository.findOne(id);
   }
 
   update(id: number, updateQuoteInput: UpdateQuoteInput) {
-    return `This action updates a #${id} quote`;
+    return this.quoteRepository.save({ ...updateQuoteInput, id: Number(id) });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} quote`;
+    return this.quoteRepository.delete(id);
   }
 }
