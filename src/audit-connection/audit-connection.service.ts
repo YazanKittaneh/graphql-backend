@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateAuditConnectionInput } from './dto/create-audit-connection.input';
 import { UpdateAuditConnectionInput } from './dto/update-audit-connection.input';
+import { AuditConnection } from './entities/audit-connection.entity';
 
 @Injectable()
 export class AuditConnectionService {
+  constructor(
+    @InjectRepository(AuditConnection)
+    private auditConnectionRepository: Repository<AuditConnection>,
+  ) {}
   create(createAuditConnectionInput: CreateAuditConnectionInput) {
     return 'This action adds a new auditConnection';
   }
