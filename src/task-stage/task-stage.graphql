@@ -1,6 +1,12 @@
 type TaskStage {
-  # Example field (placeholder)
-  exampleField: Int
+  id: ID!
+  title: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  tasksAggregate: [TaskStageTasksAggregateResponse!]!
+  createdBy: User!
+  updatedBy: User
+  tasks: [Task!]!
 }
 
 input CreateTaskStageInput {
@@ -9,7 +15,10 @@ input CreateTaskStageInput {
 }
 
 input UpdateTaskStageInput {
-  id: Int!
+  id: ID!
+  title: String
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 type Query {
