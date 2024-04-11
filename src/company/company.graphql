@@ -50,3 +50,9 @@ deals(...): CompanyDealsConnection!
 input CreateOneCompanyInput {
   # Define the fields for CreateOneCompanyInput as per requirements
 }
+createManyCompanies(
+input: CreateManyCompaniesInput!
+): [Company!]!
+input CreateManyCompaniesInput {
+  # Define the fields for CreateManyCompaniesInput as per requirements
+}
