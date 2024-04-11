@@ -9,7 +9,6 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TodoItemModule } from './todo-item/todo-item.module';
 import { ContactModule } from './contact/contact.module';
-import { UserModule } from './user/user.module';
 import { CompanyModule } from './company/company.module';
 import { EventModule } from './event/event.module';
 import { EventCategoryModule } from './event-category/event-category.module';
@@ -38,8 +37,11 @@ import { AuditConnectionModule } from './audit-connection/audit-connection.modul
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      database: 'gettingstarted',
-      username: 'gettingstarted',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'password',
+      database: 'mydatabase',
       autoLoadEntities: true,
       synchronize: true,
       logging: true,
