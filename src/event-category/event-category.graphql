@@ -22,3 +22,20 @@ type Mutation {
   updateEventCategory(updateEventCategoryInput: UpdateEventCategoryInput!): EventCategory!
   removeEventCategory(id: Int!): EventCategory
 }
+type EventCategory {
+  id: ID!
+  title: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: User!
+  updatedBy: User
+  events: [EventCategory!]!
+}
+
+input CreateOneEventCategoryInput {
+  title: String!
+}
+
+type Mutation {
+  createOneEventCategory(input: CreateOneEventCategoryInput!): EventCategory!
+}
