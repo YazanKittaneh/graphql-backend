@@ -1,6 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateContactNoteInput } from './dto/create-contact-note.input';
 import { UpdateContactNoteInput } from './dto/update-contact-note.input';
+import { ContactNote } from './entities/contact-note.entity';
+
+@Injectable()
+export class ContactNoteService {
+  constructor(
+    @InjectRepository(ContactNote)
+    private contactNoteRepository: Repository<ContactNote>,
+  ) {}
+
+  // Methods will be updated to use the repository
 
 @Injectable()
 export class ContactNoteService {
