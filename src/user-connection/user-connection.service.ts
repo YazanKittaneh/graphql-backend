@@ -1,26 +1,37 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateUserConnectionInput } from './dto/create-user-connection.input';
 import { UpdateUserConnectionInput } from './dto/update-user-connection.input';
+import { UserConnection } from './entities/user-connection.entity';
 
 @Injectable()
 export class UserConnectionService {
-  create(createUserConnectionInput: CreateUserConnectionInput) {
-    return 'This action adds a new userConnection';
+  constructor(
+    @InjectRepository(UserConnection)
+    private userConnectionRepository: Repository<UserConnection>,
+  ) {}
+
+  async create(createUserConnectionInput: CreateUserConnectionInput): Promise<UserConnection> {
+    const newUserConnection = this.userConnectionRepository.create(createUserConnectionInput);
+    return this.userConnectionRepository.save(newUserConnection);
   }
 
-  findAll() {
-    return `This action returns all userConnection`;
+  async findAll(): Promise<UserConnection[]> {
+    return this.userConnectionRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} userConnection`;
+  async findOne(id: number): Promise<UserConnection> {
+    return this.userConnectionRepository.findOne(id);
   }
 
-  update(id: number, updateUserConnectionInput: UpdateUserConnectionInput) {
-    return `This action updates a #${id} userConnection`;
+  async update(id: number, updateUserConnectionInput: UpdateUserConnectionInput): Promise<UserConnection> {
+    const userConnection = await this.userConnectionRepository.findOne(id);
+    this.userConnectionRepository.merge(userConnection, updateUserConnectionInput);
+    return this.userConnectionRepository.save(userConnection);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} userConnection`;
+  async remove(id: number): Promise<void> {
+    await this.userConnectionRepository.delete(id);
   }
 }
